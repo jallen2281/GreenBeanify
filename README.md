@@ -40,23 +40,23 @@ Provides two methods of getting/setting the appliance state:
 - HTTP POST with JSON formatted data to given URL for subscription updates
 
 The HTTP GET request paths correspond with the gea-plugin-laundry's API call.
-- /machineStatus
-- /machineSubCycle
-- /endOfCycle
-- /cycleCount
-- /dryerServiceErrorCodes
-- /dsmOverridesAllowed
-- /maximumWaterTemperature
-- /timeRemainingInSeconds
-- /tankStatus
-- /tankSelected
-- /cycleSelected
-- /washerUserInterfaceServiceErrorCodes
-- /washerInverterServiceErrorCodes
-- /washerMainControlServiceErrorCodes
-- /operatingMode
-- /dryerCriticalResponseEnabled
-- /delayTimeRemainingInMinutes
+- /laundry/machineStatus
+- /laundry/machineSubCycle
+- /laundry/endOfCycle
+- /laundry/cycleCount
+- /laundry/dryerServiceErrorCodes
+- /laundry/dsmOverridesAllowed
+- /laundry/maximumWaterTemperature
+- /laundry/timeRemainingInSeconds
+- /laundry/tankStatus
+- /laundry/tankSelected
+- /laundry/cycleSelected
+- /laundry/washerUserInterfaceServiceErrorCodes
+- /laundry/washerInverterServiceErrorCodes
+- /laundry/washerMainControlServiceErrorCodes
+- /laundry/operatingMode
+- /laundry/dryerCriticalResponseEnabled
+- /laundry/delayTimeRemainingInMinutes
 
 
 Subscribes to selected set of events and sends callbacks to given URL with JSON in the POST body with details on what has changed.
