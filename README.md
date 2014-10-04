@@ -1,7 +1,7 @@
 ## GreenBeanify
 
 ### Description
-GreenBeanify is an Express-based web service that interfaces (via firstbuild's Green Bean) to your late model GE appliance and exposes all status and control functionality available in the gea-sdk via several different web services. This extensibility enables your appliance to join the Internet of Things (Iot) and will allow you to locally or remotely interface your appliance with other network-attached home services such as home automation and security systems, energy monitoring systems, smart devices and whatever else you can imagine. Since the Green Bean requires USB connectivity to the machine running GreenBeanify, it is recommended that you use a Raspberry Pi or similar SBC with Ethernet or WiFi connectivity to run this application. 
+GreenBeanify is an Express-based web service that interfaces (via firstbuild's Green Bean) to your late model GE appliance and exposes all status and control functionality available in the gea-sdk via several different web services. This extensibility enables your appliance to join the Internet of Things (IoT) and will allow you to locally or remotely interface your appliance with other network-attached home services such as home automation and security systems, energy monitoring systems, smart devices and whatever else you can imagine. Since the Green Bean requires USB connectivity to the machine running GreenBeanify, it is recommended that you use a Raspberry Pi or similar SBC with Ethernet or WiFi connectivity to run this application. 
 
 
 ### Example use cases
