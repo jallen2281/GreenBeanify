@@ -1,6 +1,8 @@
 {
-  "name": "hackathon-example",
-  "version": "0.0.0",
+  "name": "GreenBeanify",
+  "description": "Express-based web service that provides access to appliance state",
+  "version": "0.0.1",
+  "author": "Brian Rudy <brudy@praecogito.com>",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"

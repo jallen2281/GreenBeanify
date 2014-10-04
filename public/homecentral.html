@@ -14,7 +14,7 @@ td.blink {
     text-decoration: blink;
 }
 </style>
-<body background="/public/images/img1.png">
+<body background="/images/img1.png">
   <table width="500" height="250">
     <tr>Connected to BeanStalk Server...</tr>
     <br><br>
@@ -30,23 +30,8 @@ td.blink {
         </table>
       </td>
       <td>
-          <form action="dryerStatus" method="get">
+          <form action="machineStatus" method="get">
             <input type="submit" value="Status" font-size=120%>
-          </form>
-      </td>
-      <td>
-          <form action="dryerStart" method="get">
-            <input type="submit" value="Start" font-size=120%>
-          </form>
-      </td>
-      <td>
-          <form action="dryerLightOn" method="get">
-            <input type="submit" value="LightOn" font-size=120%>
-          </form>
-      </td>
-      <td>
-          <form action="dryerLightOff" method="get">
-            <input type="submit" value="LightOff" font-size=120%>
           </form>
       </td>
     </tr>
