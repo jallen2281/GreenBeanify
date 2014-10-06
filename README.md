@@ -22,7 +22,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 - npm start
 
 ### History
-- Based on JJ's Remote Dryer from the hackathon (https://github.com/jianguoj/BeanStalk).
+- Based on Jianguo Jiang's Remote Dryer from the hackathon (https://github.com/jianguoj/BeanStalk).
 - v0.0.1 - First version.
 
 
