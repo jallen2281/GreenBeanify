@@ -11,7 +11,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 ### Status
 - Alpha-level application. Use at your own risk. YMMV
 - Currently only supports gea-plugin-laundry devices.
-- The subscription/POST functionality has not been implimented yet.
+- The subscription/POST functionality has been only partially implimented.
 - Currently only supports read functions. 
 
 ### Installation instructions
@@ -24,6 +24,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 ### History
 - Based on Jianguo Jiang's Remote Dryer from the hackathon (https://github.com/jianguoj/BeanStalk).
 - v0.0.1 - First version.
+- v0.0.2 - Re-wrote update handling using subscriptions rather than reading the device each time. Added initial support for JSON POSTs on update.
 
 
 ### Design Goals
