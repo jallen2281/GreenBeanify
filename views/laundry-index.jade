@@ -3,19 +3,20 @@ extends layout
 block content
   h1 GreenBeanify
   p Welcome to #{title}
-  table
-    tr
-      td(style='width: '+(80/2)+'%')
-        h4 Name
-      td(style='width: '+(80/2)+'%')
-        h4 Last value
-      td
-        h4 HTTP GET URL
-     -each val, key in laundryVals
-      tr
-        td #{key}
-        td #{val}
-        td 
-          form(action="/laundry/#{key}", method="get")
-            input(type="submit", value="/laundry/#{key}")
+  img(src="/images/washer_dryer.png", alt="Washer/Dryer", style="float:left")
+  #wrapper
+    h2 Function list
+    #functionList
+      table
+        thead
+          th Name
+          th Last value
+          th HTTP GET URL
+        tbody
+          each val, key in laundryVals
+            tr
+              td #{key}
+              td #{val}
+              td
+                a(href='/laundry/#{key}') /laundry/#{key}
 
