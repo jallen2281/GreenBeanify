@@ -59,6 +59,7 @@ The HTTP GET request paths correspond with the gea-plugin-laundry's API call.
 - /laundry/dryerCriticalResponseEnabled
 - /laundry/delayTimeRemainingInMinutes
 
+- /laundry/ provides an index of all the above and their last updated values 
 
 Subscribes to selected set of events and sends callbacks to given URL with JSON in the POST body with details on what has changed.
 
@@ -69,10 +70,12 @@ Example of JSON:
 		"id":"aaabbbccdddd",
 		"created_at":"2014-10-01T21:23:41-08:00",
 		"status":"changed",
-		"type":"laundry.machineStatus", 
-		"interface":"HID1",
+		"messageType":"laundry.machineStatus", 
+		"applianceAddress":36,
+		"applianceType":"Clothes washer",
 		"modelNumber":"GFWR4805F0MC",
-		"serialNumber":"ZA222222G",
+		"serialNumber":"ZAxxxxxxG",
+		"applianceVersion":"0.1.1.46.1.91.1.1.3",
 		"softwareVersion":"AA.BB.CC.DD",
 		"data":{
 			"text":"Idle",
