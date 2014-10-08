@@ -5,12 +5,32 @@ var router = express.Router();
 //var greenBean = require('../greenBean').greenBean;
 var greenBean = require("green-bean");
 
+// this is where we will store the latest values
+laundryVals = {
+	machineStatus: "Unknown",
+	machineSubCycle: "Unknown",
+	endOfCycle: "Unknown",
+	cycleCount: "Unknown",
+	dryerServiceErrorCodes: "Unknown",
+	maximumWaterTemperature: "Unknown",
+	timeRemainingInSeconds: "Unknown",
+	tankStatus: "Unknown",
+	tankSelected: "Unknown",
+	cycleSelected: "Unknown",
+	washerUserInterfaceServiceErrorCodes: "Unknown",
+	washerInverterServiceErrorCodes: "Unknown",
+	washerMainControlServiceErrorCodes: "Unknown",
+	operatingMode: "Unknown",
+	dryerCriticalResponseEnabled: "Unknown",
+	delayTimeRemainingInMinutes: "Unknown"
+};
+
 
 // Get the initial value
 function delayTimeRemainingInMinutes_setval(value) {
 	console.log("delay time remaining is:", value);
-	delayTimeRemainingInMinutes = value.toString();
-	poster(delayTimeRemainingInMinutes);
+	laundryVals.delayTimeRemainingInMinutes = value.toString();
+	poster(laundryVals.delayTimeRemainingInMinutes);
 }
 
 function dryerCriticalResponseEnabled_setval(value) {
@@ -24,8 +44,8 @@ function dryerCriticalResponseEnabled_setval(value) {
 			stat = "Critical response enabled";
 			break;
 	}
-	dryerCriticalResponseEnabled = stat;
-	poster(dryerCriticalResponseEnabled);
+	laundryVals.dryerCriticalResponseEnabled = stat;
+	poster(laundryVals.dryerCriticalResponseEnabled);
 }
 
 function operatingMode_setval(value) {
@@ -63,29 +83,29 @@ function operatingMode_setval(value) {
 			stat = "Floor type selection mode";
 			break;
 	}
-	operatingMode = stat;
-	poster(operatingMode);
+	laundryVals.operatingMode = stat;
+	poster(laundryVals.operatingMode);
 }
 
 // We need to decode the bitfield
 function washerMainControlServiceErrorCodes_setval(value) {
 	console.log("washer main control service error codes are:", value);
-	washerMainControlServiceErrorCodes = value.toString();
-	poster(washerMainControlServiceErrorCodes);
+	laundryVals.washerMainControlServiceErrorCodes = value.toString();
+	poster(laundryVals.washerMainControlServiceErrorCodes);
 }
 
 // We need to decode the bitfield
 function washerInverterServiceErrorCodes_setval(value) {
 	console.log("washer inverter service error codes are:", value);
-	washerInverterServiceErrorCodes = value.toString();
-	poster(washerInverterServiceErrorCodes);
+	laundryVals.washerInverterServiceErrorCodes = value.toString();
+	poster(laundryVals.washerInverterServiceErrorCodes);
 }
 
 // We need to decode the bitfield
 function washerUserInterfaceServiceErrorCodes_setval(value) {
 	console.log("washer user interface error codes are:", value);
-	washerUserInterfaceServiceErrorCodes = value.toString();
-	poster(washerUserInterfaceServiceErrorCodes);
+	laundryVals.washerUserInterfaceServiceErrorCodes = value.toString();
+	poster(laundryVals.washerUserInterfaceServiceErrorCodes);
 }
 
 function cycleSelected_setval(value) {
@@ -192,28 +212,28 @@ function cycleSelected_setval(value) {
 			stat = "Warm up";
 			break;
 	}
-	cycleSelected = stat;
-	poster(cycleSelected);
+	laundryVals.cycleSelected = stat;
+	poster(laundryVals.cycleSelected);
 }
 
 // Need to test this to see how to parse tankType, tankEnabled
 function tankSelected_setval(value) {
 	console.log("selected tank is:", value);
-	tankSelected = value.toString();
-	poster(tankSelected);
+	laundryVals.tankSelected = value.toString();
+	poster(laundryVals.tankSelected);
 }
 
 // Need to test this  to see how to parse tankType, TankPercentageRemaining
 function tankStatus_setval(value) {
 	console.log("tank status is:", value);
-	tankStatus = value.toString();
-	poster(tankStatus);
+	laundryVals.tankStatus = value.toString();
+	poster(laundryVals.tankStatus);
 }
 
 function timeRemainingInSeconds_setval(value) {
 	console.log("time remaining is:", value);
-	timeRemainingInSeconds = value.toString();
-	poster(timeRemainingInSeconds);
+	laundryVals.timeRemainingInSeconds = value.toString();
+	poster(laundryVals.timeRemainingInSeconds);
 }
 
 function maximumWaterTemperature_setval(value) {
@@ -245,8 +265,8 @@ function maximumWaterTemperature_setval(value) {
 			stat = "Extra hot";
 			break;
 	}
-	maximumWaterTemperature = stat;
-	poster(maximumWaterTemperature);
+	laundryVals.maximumWaterTemperature = stat;
+	poster(laundryVals.maximumWaterTemperature);
 }
 
 function dsmOverridesAllowed_setval(value) {
@@ -260,8 +280,8 @@ function dsmOverridesAllowed_setval(value) {
 			stat = "DSM override allowed";
 			break;
 	}
-	dsmOverridesAllowed = stat;
-	poster(dsmOverridesAllowed);
+	laundryVals.dsmOverridesAllowed = stat;
+	poster(laundryVals.dsmOverridesAllowed);
 }
 
 function dryerServiceErrorCodes_setval(value) {
@@ -305,14 +325,14 @@ function dryerServiceErrorCodes_setval(value) {
 			stat = "User interface assertion";
 			break;
 	}
-	dryerServiceErrorCodes = stat;
-	poster(dryerServiceErrorCodes);
+	laundryVals.dryerServiceErrorCodes = stat;
+	poster(laundryVals.dryerServiceErrorCodes);
 }
 
 function cycleCount_setval(value) {
 	console.log("cycle count is:", value);
-	cycleCount = value.toString();
-	poster(cycleCount);
+	laundryVals.cycleCount = value.toString();
+	poster(laundryVals.cycleCount);
 }
 
 function endOfCycle_setval(value) {
@@ -326,8 +346,8 @@ function endOfCycle_setval(value) {
 			stat = "End of cycle";
 			break;
 	}
-	endOfCycle = stat;
-	poster(endOfCycle);
+	laundryVals.endOfCycle = stat;
+	poster(laundryVals.endOfCycle);
 }
 
 function machineSubCycle_setval(value) {
@@ -386,8 +406,8 @@ function machineSubCycle_setval(value) {
 			stat = "Air fluff";
 			break;
 	}
-	machineSubCycle = stat;
-	poster(machineSubCycle);
+	laundryVals.machineSubCycle = stat;
+	poster(laundryVals.machineSubCycle);
 }
 
 function machineStatus_setval(value) {
@@ -425,8 +445,8 @@ function machineStatus_setval(value) {
 			stat = "Clean speak";
 			break;
 	} 
-	machineStatus = stat;
-	poster(machineStatus);
+	laundryVals.machineStatus = stat;
+	poster(laundryVals.machineStatus);
 }
 
 greenBean.connect("laundry", function (laundry) {

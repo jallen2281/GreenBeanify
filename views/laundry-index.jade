@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 GreenBeanify
+  p Welcome to #{title}
+  table
+    tr
+      td(style='width: '+(80/2)+'%')
+        h4 Name
+      td(style='width: '+(80/2)+'%')
+        h4 Last value
+      td
+        h4 HTTP GET URL
+     -each val, key in laundryVals
+      tr
+        td #{key}
+        td #{val}
+        td 
+          form(action="/laundry/#{key}", method="get")
+            input(type="submit", value="/laundry/#{key}")
+

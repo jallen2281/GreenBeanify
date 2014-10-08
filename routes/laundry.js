@@ -3,75 +3,75 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	res.render('index', { title: 'Express' });
+	res.render('laundry-index', { title: 'Laundry' });
 });
 
 router.get('/delayTimeRemainingInMinutes', function(req, res) {
-	res.send(delayTimeRemainingInMinutes);
+	res.send(laundryVals.delayTimeRemainingInMinutes);
 });
 
 router.get('/dryerCriticalResponseEnabled', function(req, res) {
-	res.send(dryerCriticalResponseEnabled);
+	res.send(laundryVals.dryerCriticalResponseEnabled);
 });
 
 router.get('/operatingMode', function(req, res) {
-	res.send(operatingMode);
+	res.send(laundryVals.operatingMode);
 });
 
 router.get('/washerMainControlServiceErrorCodes', function(req, res) {
-	res.send(washerMainControlServiceErrorCodes);
+	res.send(laundryVals.washerMainControlServiceErrorCodes);
 });
 
 router.get('/washerInverterServiceErrorCodes', function(req, res) {
-	res.send(washerInverterServiceErrorCodes);
+	res.send(laundryVals.washerInverterServiceErrorCodes);
 });
 
 router.get('/washerUserInterfaceServiceErrorCodes', function(req, res) {
-	res.send(washerUserInterfaceServiceErrorCodes);
+	res.send(laundryVals.washerUserInterfaceServiceErrorCodes);
 });
 
 router.get('/cycleSelected', function(req, res) {
-	res.send(cycleSelected);
+	res.send(laundryVals.cycleSelected);
 });
 
 router.get('/tankSelected', function(req, res) {
-	res.send(tankSelected);
+	res.send(laundryVals.tankSelected);
 });
 
 router.get('/tankStatus', function(req, res) {
-	res.send(tankStatus);
+	res.send(laundryVals.tankStatus);
 });
 
 router.get('/timeRemainingInSeconds', function(req, res) {
-	res.send(timeRemainingInSeconds);
+	res.send(laundryVals.timeRemainingInSeconds);
 });
 
 router.get('/maximumWaterTemperature', function(req, res) {
-	res.send(maximumWaterTemperature);
+	res.send(laundryVals.maximumWaterTemperature);
 });
 
 router.get('/dsmOverridesAllowed', function(req, res) {
-	res.send(dsmOverridesAllowed);
+	res.send(laundryVals.dsmOverridesAllowed);
 });
 
 router.get('/dryerServiceErrorCodes', function(req, res) {
-	res.send(dryerServiceErrorCodes);
+	res.send(laundryVals.dryerServiceErrorCodes);
 });
 
 router.get('/cycleCount', function(req, res) {
-	res.send(cycleCount);
+	res.send(laundryVals.cycleCount);
 });
 
 router.get('/endOfCycle', function(req, res) {
-	res.send(endOfCycle);
+	res.send(laundryVals.endOfCycle);
 });
 
 router.get('/machineSubCycle', function(req, res) {
-		res.send(machineSubCycle);
+	res.send(laundryVals.machineSubCycle);
 });
 
 router.get('/machineStatus', function(req, res) {
-        res.send(machineStatus);
+        res.send(laundryVals.machineStatus);
 });
 
 
