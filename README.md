@@ -13,13 +13,14 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 - Currently only supports gea-plugin-laundry devices.
 - The subscription/POST functionality has been only partially implimented.
 - Currently only supports read functions. 
+- Does not properly handle multiple Green Bean devices connected to the same GreenBeanify instance
 
 ### Installation instructions
 - Install Node.js
 - Install npm
-- npm install brudy/GreenBeanify
+- *npm install brudy/GreenBeanify*
 - cd into your GreenBeanify directory
-- npm start
+- *npm start*
 
 ### History
 - Based on Jianguo Jiang's Remote Dryer from the hackathon (https://github.com/jianguoj/BeanStalk).
