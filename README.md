@@ -7,6 +7,11 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 ### Example use cases
 - Many homes have seperate laundry areas apart from the main living space, so when the end of cycle notification sounds on a laundry pair it is often inaudible to the house occupants. Using GreenBeanify and a Wifi-equipped Raspberry Pi, the laundry pair can send notification messages to a home automation system or external SaaS provider that in turn sends "The load in the dryer is done. Please empty!" Pushover/Notify My Android (NMA) notifications to the house occupant's iOS/Android devices. Notifications can be sent periodically until the dryer's door is opened.
 
+<img src="http://www.praecogito.com/photobucket/green-beanify-reference.jpg">
+
+### Screen Shots
+<img src="http://www.praecogito.com/photobucket/greenbeanify-main-screenshot-trimmed.png">
+<img src="http://www.praecogito.com/photobucket/greenbeanify-laundry-screenshot-trimmed.png">
 
 ### Status
 - Alpha-level application. Use at your own risk. YMMV
