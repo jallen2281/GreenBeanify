@@ -450,121 +450,70 @@ function machineStatus_setval(value) {
 }
 
 greenBean.connect("laundry", function (laundry) {
-	laundry.delayTimeRemainingInMinutes.read(function (value) {
-		delayTimeRemainingInMinutes_setval(value);
-	});
 	laundry.delayTimeRemainingInMinutes.subscribe(function (value) {
 		delayTimeRemainingInMinutes_setval(value);
 	});
 
-	laundry.dryerCriticalResponseEnabled.read(function (value) {
-		dryerCriticalResponseEnabled_setval(value);
-	});
 	laundry.dryerCriticalResponseEnabled.subscribe(function (value) {
 		dryerCriticalResponseEnabled_setval(value);
 	});
 
-	laundry.operatingMode.read(function (value) {
-		operatingMode_setval(value);
-	});
 	laundry.operatingMode.subscribe(function (value) {
 		operatingMode_setval(value);
 	});
 
-	laundry.washerMainControlServiceErrorCodes.read(function (value) {
-		washerMainControlServiceErrorCodes_setval(value);
-	});
 	laundry.washerMainControlServiceErrorCodes.subscribe(function (value) {
 		washerMainControlServiceErrorCodes_setval(value);
 	});
  
-	laundry.washerInverterServiceErrorCodes.read(function (value) {
-		washerInverterServiceErrorCodes_setval(value);
-	});
 	laundry.washerInverterServiceErrorCodes.subscribe(function (value) {
 		washerInverterServiceErrorCodes_setval(value);
 	});
 
-	laundry.washerUserInterfaceServiceErrorCodes.read(function (value) {
-		washerUserInterfaceServiceErrorCodes_setval(value);
-	});
 	laundry.washerUserInterfaceServiceErrorCodes.subscribe(function (value) {
 		washerUserInterfaceServiceErrorCodes_setval(value);
 	});
 
-	laundry.cycleSelected.read(function (value) {
-		cycleSelected_setval(value);
-	});
 	laundry.cycleSelected.subscribe(function (value) {
 		cycleSelected_setval(value);
 	});
 
-	laundry.tankSelected.read(function (value) {
-		tankSelected_setval(value);
-	});
 	laundry.tankSelected.subscribe(function (value) {
 		tankSelected_setval(value);
 	});
 
-	laundry.tankStatus.read(function (value) {
-		tankStatus_setval(value);
-	});
 	laundry.tankStatus.subscribe(function (value) {
 		tankStatus_setval(value);
 	});
 
-	laundry.timeRemainingInSeconds.read(function (value) {
-		timeRemainingInSeconds_setval(value);
-	});
 	laundry.timeRemainingInSeconds.subscribe(function (value) {
 		timeRemainingInSeconds_setval(value);
 	});
 
-	laundry.maximumWaterTemperature.read(function (value) {
-		maximumWaterTemperature_setval(value);
-	});
 	laundry.maximumWaterTemperature.subscribe(function (value) {
 		maximumWaterTemperature_setval(value);
 	});
 
-	laundry.dsmOverridesAllowed.read(function (value) {
-		dsmOverridesAllowed_setval(value);
-	});
 	laundry.dsmOverridesAllowed.subscribe(function (value) {
 		dsmOverridesAllowed_setval(value);
 	});
 
-	laundry.dryerServiceErrorCodes.read(function (value) {
-		dryerServiceErrorCodes_setval(value);
-	});
 	laundry.dryerServiceErrorCodes.subscribe(function (value) {
 		dryerServiceErrorCodes_setval(value);
 	});
 
-	laundry.cycleCount.read(function (value) {
-		cycleCount_setval(value);
-	});
 	laundry.cycleCount.subscribe(function (value) {
 		cycleCount_setval(value);
 	});
 
-	laundry.endOfCycle.read(function (value) {
-		endOfCycle_setval(value);
-	});
 	laundry.endOfCycle.subscribe(function (value) {
 		endOfCycle_setval(value);
 	});
 
-	laundry.machineSubCycle.read(function (value) {
-		machineSubCycle_setval(value);
-	});
 	laundry.machineSubCycle.subscribe(function (value) {
 		machineSubCycle_setval(value);
 	});
 
-	laundry.machineStatus.read(function (value) {
-		machineStatus_setval(value);
-	});
 	laundry.machineStatus.subscribe(function (value) {
 		machineStatus_setval(value);
 	});
