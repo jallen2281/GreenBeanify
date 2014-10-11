@@ -22,7 +22,7 @@ a {
 	width: 232px;
 	border-radius: 116px;
 	margin: 20px;
-	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+	box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 	float: left;
 }
 
@@ -39,6 +39,8 @@ a {
 		border-spacing:1px;
 		background:#CCC;
 		opacity:0.75;
+		width: 100%;
+		box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.75);  
 	}
 		#functionList table th {
 			background:#EEE;
