@@ -14,9 +14,11 @@ module.exports = function postUpdate(jsondata){
 			created_at: "2014-10-01T21:23:41-08:00",
 			"status": "changed",
 			type: "laundry.machineStatus", 
-			"interface": "HID1",
-			modelNumber: "GFWR4805F0MC",
-			serialNumber: "ZA222222G",
+			applianceAddress: applianceVals.address,
+			applianceType: applianceVals.type,
+			modelNumber: applianceVals.modelNumber,
+			serialNumber: applianceVals.serialNumber,
+			applianceVersion: applianceVals.version,
 			softwareVersion: "AA.BB.CC.DD",
 			data: data
 		}
