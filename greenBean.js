@@ -37,7 +37,9 @@ applianceVals = {
 function delayTimeRemainingInMinutes_setval(value) {
 	console.log("delay time remaining is:", value);
 	laundryVals.delayTimeRemainingInMinutes = value.toString();
-	poster(laundryVals.delayTimeRemainingInMinutes);
+	if (config.post.laundry.delayTimeRemainingInMinutesi && config.post.enabled) {
+		poster(laundryVals.delayTimeRemainingInMinutes);
+	}
 }
 
 function dryerCriticalResponseEnabled_setval(value) {
@@ -52,7 +54,9 @@ function dryerCriticalResponseEnabled_setval(value) {
 			break;
 	}
 	laundryVals.dryerCriticalResponseEnabled = stat;
-	poster(laundryVals.dryerCriticalResponseEnabled);
+	if (config.post.laundry.dryerCriticalResponseEnabled && config.post.enabled) {
+		poster(laundryVals.dryerCriticalResponseEnabled);
+	}
 }
 
 function operatingMode_setval(value) {
@@ -91,28 +95,36 @@ function operatingMode_setval(value) {
 			break;
 	}
 	laundryVals.operatingMode = stat;
-	poster(laundryVals.operatingMode);
+	if (config.post.laundry.operatingMode && config.post.enabled) {
+		poster(laundryVals.operatingMode);
+	}
 }
 
 // We need to decode the bitfield
 function washerMainControlServiceErrorCodes_setval(value) {
 	console.log("washer main control service error codes are:", value);
 	laundryVals.washerMainControlServiceErrorCodes = value.toString();
-	poster(laundryVals.washerMainControlServiceErrorCodes);
+	if (config.post.laundry.washerMainControlServiceErrorCodes && config.post.enabled) {
+		poster(laundryVals.washerMainControlServiceErrorCodes);
+	}
 }
 
 // We need to decode the bitfield
 function washerInverterServiceErrorCodes_setval(value) {
 	console.log("washer inverter service error codes are:", value);
 	laundryVals.washerInverterServiceErrorCodes = value.toString();
-	poster(laundryVals.washerInverterServiceErrorCodes);
+	if (config.post.laundry.washerInverterServiceErrorCodes && config.post.enabled) {
+		poster(laundryVals.washerInverterServiceErrorCodes);
+	}
 }
 
 // We need to decode the bitfield
 function washerUserInterfaceServiceErrorCodes_setval(value) {
 	console.log("washer user interface error codes are:", value);
 	laundryVals.washerUserInterfaceServiceErrorCodes = value.toString();
-	poster(laundryVals.washerUserInterfaceServiceErrorCodes);
+	if (config.post.laundry.washerUserInterfaceServiceErrorCodes && config.post.enabled) {
+		poster(laundryVals.washerUserInterfaceServiceErrorCodes);
+	}
 }
 
 function cycleSelected_setval(value) {
@@ -220,27 +232,35 @@ function cycleSelected_setval(value) {
 			break;
 	}
 	laundryVals.cycleSelected = stat;
-	poster(laundryVals.cycleSelected);
+	if (config.post.laundry.cycleSelected && config.post.enabled) {
+		poster(laundryVals.cycleSelected);
+	}
 }
 
 // Need to test this to see how to parse tankType, tankEnabled
 function tankSelected_setval(value) {
 	console.log("selected tank is:", value);
 	laundryVals.tankSelected = value.toString();
-	poster(laundryVals.tankSelected);
+	if (config.post.laundry.tankSelected && config.post.enabled) {
+		poster(laundryVals.tankSelected);
+	}
 }
 
 // Need to test this  to see how to parse tankType, TankPercentageRemaining
 function tankStatus_setval(value) {
 	console.log("tank status is:", value);
 	laundryVals.tankStatus = value.toString();
-	poster(laundryVals.tankStatus);
+	if (config.post.laundry.tankStatus && config.post.enabled) {
+		poster(laundryVals.tankStatus);
+	}
 }
 
 function timeRemainingInSeconds_setval(value) {
 	console.log("time remaining is:", value);
 	laundryVals.timeRemainingInSeconds = value.toString();
-	poster(laundryVals.timeRemainingInSeconds);
+	if (config.post.laundry.timeRemainingInSeconds && config.post.enabled) {
+		poster(laundryVals.timeRemainingInSeconds);
+	}
 }
 
 function maximumWaterTemperature_setval(value) {
@@ -273,7 +293,9 @@ function maximumWaterTemperature_setval(value) {
 			break;
 	}
 	laundryVals.maximumWaterTemperature = stat;
-	poster(laundryVals.maximumWaterTemperature);
+	if (config.post.laundry.maximumWaterTemperature && config.post.enabled) {
+		poster(laundryVals.maximumWaterTemperature);
+	}
 }
 
 function dsmOverridesAllowed_setval(value) {
@@ -288,7 +310,9 @@ function dsmOverridesAllowed_setval(value) {
 			break;
 	}
 	laundryVals.dsmOverridesAllowed = stat;
-	poster(laundryVals.dsmOverridesAllowed);
+	if (config.post.laundry.dsmOverridesAllowed && config.post.enabled) {
+		poster(laundryVals.dsmOverridesAllowed);
+	}
 }
 
 function dryerServiceErrorCodes_setval(value) {
@@ -333,13 +357,17 @@ function dryerServiceErrorCodes_setval(value) {
 			break;
 	}
 	laundryVals.dryerServiceErrorCodes = stat;
-	poster(laundryVals.dryerServiceErrorCodes);
+	if (config.post.laundry.dryerServiceErrorCodes && config.post.enabled) {
+		poster(laundryVals.dryerServiceErrorCodes);
+	}
 }
 
 function cycleCount_setval(value) {
 	console.log("cycle count is:", value);
 	laundryVals.cycleCount = value.toString();
-	poster(laundryVals.cycleCount);
+	if (config.post.laundry.cycleCount && config.post.enabled) {
+		poster(laundryVals.cycleCount);
+	}
 }
 
 function endOfCycle_setval(value) {
@@ -354,7 +382,9 @@ function endOfCycle_setval(value) {
 			break;
 	}
 	laundryVals.endOfCycle = stat;
-	poster(laundryVals.endOfCycle);
+	if (config.post.laundry.endOfCycle && config.post.enabled) {
+		poster(laundryVals.endOfCycle);
+	}
 }
 
 function machineSubCycle_setval(value) {
@@ -414,7 +444,9 @@ function machineSubCycle_setval(value) {
 			break;
 	}
 	laundryVals.machineSubCycle = stat;
-	poster(laundryVals.machineSubCycle);
+	if (config.post.laundry.machineSubCycle && config.post.enabled) {
+		poster(laundryVals.machineSubCycle);
+	}
 }
 
 function machineStatus_setval(value) {
@@ -453,7 +485,9 @@ function machineStatus_setval(value) {
 			break;
 	} 
 	laundryVals.machineStatus = stat;
-	poster(laundryVals.machineStatus);
+	if (config.post.laundry.machineStatus && config.post.enabled) {
+		poster(laundryVals.machineStatus);
+	}
 }
 
 

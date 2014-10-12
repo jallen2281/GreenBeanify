@@ -32,9 +32,9 @@ module.exports = function postUpdate(jsondata){
 	};
 
 	var options = {
-		host: '192.168.69.8',
-		port: 8080,
-		path: '/bin/GreenBeanifyHandler.pl',
+		host: config.post.post_host,
+		port: config.post.post_port,
+		path: config.post.post_path,
 		method: 'POST',
 		headers: headers
 	};

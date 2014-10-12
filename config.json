@@ -1,0 +1,28 @@
+{
+  "instance": "main",
+  "listen_port": 3000,
+  "post": {
+    "enabled": true,
+    "post_host": "192.168.69.8",
+    "post_port": "8080",
+    "post_path": "/bin/GreenBeanifyHandler.pl",
+    "laundry": {
+      "machineStatus": true,
+      "machineSubCycle": true,
+      "endOfCycle": true,
+      "cycleCount": true,
+      "dryerServiceErrorCodes": true,
+      "maximumWaterTemperature": true,
+      "timeRemainingInSeconds": true,
+      "tankStatus": true,
+      "tankSelected": true,
+      "cycleSelected": true,
+      "washerUserInterfaceServiceErrorCodes": true,
+      "washerInverterServiceErrorCodes": true,
+      "washerMainControlServiceErrorCodes": true,
+      "operatingMode": true,
+      "dryerCriticalResponseEnabled": true,
+      "delayTimeRemainingInMinutes": true
+    }
+  }
+}
