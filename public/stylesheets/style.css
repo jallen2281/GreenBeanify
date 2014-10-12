@@ -26,6 +26,36 @@ a {
 	float: left;
 }
 
+#applianceList {
+	margin:0 0 30px 0;
+	position:relative;
+	left: -20px;
+	top: -280px;
+}
+	#applianceList table {
+		border-collapse:separate;
+		border-spacing:1px;
+		background:#CCC;
+		opacity:0.75;
+		box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.75);  
+	}
+		#applianceList table th {
+			background:#EEE;
+			font-weight:600;
+			padding:10px 20px;
+			text-align:center;
+		}
+		#applianceList table tbody {
+			padding:0; margin:0;
+			border-collapse:collapse;
+			border-spacing:0px;
+		}
+			#applianceList table td {
+				background:#FFF;
+				padding:5px 10px;
+				text-align:left;
+			}
+
 #wrapper {
 	padding-left:312px;
 	position:relative;

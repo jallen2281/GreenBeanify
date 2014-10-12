@@ -20,4 +20,15 @@ block content
               td #{val}
               td
                 a(href='/laundry/#{key}') /laundry/#{key}
-
+  #applianceList
+    h2 Appliance info
+    table
+      thead
+        th Name
+        th Last value
+      tbody
+        each val, key in applianceVals
+          tr
+            td #{key}
+            td #{val}
+  #applianceType 
