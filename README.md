@@ -11,7 +11,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 
 ### Screen Shots
 <img src="http://www.praecogito.com/photobucket/greenbeanify-main-screenshot-trimmed2.png">
-<img src="http://www.praecogito.com/photobucket/greenbeanify-laundry-screenshot-trimmed2.png">
+<img src="http://www.praecogito.com/photobucket/greenbeanify-laundry-screenshot-trimmed3-sanitized.png">
 
 ### Status
 - Alpha-level application. Use at your own risk. YMMV
