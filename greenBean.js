@@ -25,6 +25,13 @@ laundryVals = {
 	delayTimeRemainingInMinutes: "Unknown"
 };
 
+applianceVals = {
+	address: "Unknown",
+	version: "Unknown",
+	type: "Unknown",
+	modelNumber: "Unknown",
+	serialNumber: "Unknown"
+}
 
 // Get the initial value
 function delayTimeRemainingInMinutes_setval(value) {
@@ -449,73 +456,214 @@ function machineStatus_setval(value) {
 	poster(laundryVals.machineStatus);
 }
 
+
+function applianceType_setval(value) {
+	console.log("appliance type is:", value);
+	var stat = "Water heater";
+	switch (value) {
+		case 0:
+			stat = "Water heater";
+			break;
+		case 1:
+			stat = "Clothes dryer";
+			break;
+		case 2:
+			stat = "Clothes washer";
+			break;
+		case 3:
+			stat = "Refrigerator";
+			break;
+		case 4:
+			stat = "Microwave";
+			break;
+		case 5:
+			stat = "Advantium";
+			break;
+		case 6:
+			stat = "Dishwasher";
+			break;
+		case 7:
+			stat = "Oven";
+			break;
+		case 8:
+			stat = "Electric range";
+			break;
+		case 9:
+			stat = "Gas range";
+			break;
+	}
+	applianceVals.type = stat;
+}
+
 greenBean.connect("laundry", function (laundry) {
-	laundry.delayTimeRemainingInMinutes.subscribe(function (value) {
-		delayTimeRemainingInMinutes_setval(value);
+	var pacingInterval = 250; //500ms
+	var timeout = 0;
+	// Get the appliance info
+	applianceVals.address = laundry.address;
+	console.log("address is: ", applianceVals.address);
+	applianceVals.version = laundry.version.join(".");
+	console.log("version is: ", applianceVals.version);
+
+	console.log("Reading data and setting up subscriptions...");
+	laundry.applianceType.read(function (value) {
+		applianceType_setval(value);
 	});
 
-	laundry.dryerCriticalResponseEnabled.subscribe(function (value) {
-		dryerCriticalResponseEnabled_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.modelNumber.read()");
+		laundry.modelNumber.read(function (modelNumber) {
+			applianceVals.modelNumber = modelNumber.trim();
+			console.log("model number is: ", applianceVals.modelNumber);
+		});
+	}, timeout);
 
-	laundry.operatingMode.subscribe(function (value) {
-		operatingMode_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.serialNumber.read()");
+		laundry.serialNumber.read(function (serialNumber) {
+			applianceVals.serialNumber = serialNumber.trim();
+			console.log("serial number is: ", applianceVals.serialNumber);
+		});
+	}, timeout);
 
-	laundry.washerMainControlServiceErrorCodes.subscribe(function (value) {
-		washerMainControlServiceErrorCodes_setval(value);
-	});
- 
-	laundry.washerInverterServiceErrorCodes.subscribe(function (value) {
-		washerInverterServiceErrorCodes_setval(value);
-	});
+	// Setup subscriptions for all updates
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.delayTimeRemainingInMinutes.subscribe()");
+		laundry.delayTimeRemainingInMinutes.subscribe(function (value) {
+			delayTimeRemainingInMinutes_setval(value);
+		});
+	}, timeout);
 
-	laundry.washerUserInterfaceServiceErrorCodes.subscribe(function (value) {
-		washerUserInterfaceServiceErrorCodes_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.dryerCriticalResponseEnabled.subscribe()");
+		laundry.dryerCriticalResponseEnabled.subscribe(function (value) {
+			dryerCriticalResponseEnabled_setval(value);
+		});
+	}, timeout);
 
-	laundry.cycleSelected.subscribe(function (value) {
-		cycleSelected_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.operatingMode.subscribe()");
+		laundry.operatingMode.subscribe(function (value) {
+			operatingMode_setval(value);
+		});
+	}, timeout);
 
-	laundry.tankSelected.subscribe(function (value) {
-		tankSelected_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.washerMainControlServiceErrorCodes.subscribe()");
+		laundry.washerMainControlServiceErrorCodes.subscribe(function (value) {
+			washerMainControlServiceErrorCodes_setval(value);
+		});
+ 	}, timeout);
 
-	laundry.tankStatus.subscribe(function (value) {
-		tankStatus_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.washerInverterServiceErrorCodes.subscribe()");
+		laundry.washerInverterServiceErrorCodes.subscribe(function (value) {
+			washerInverterServiceErrorCodes_setval(value);
+		});
+	}, timeout);
 
-	laundry.timeRemainingInSeconds.subscribe(function (value) {
-		timeRemainingInSeconds_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.washerUserInterfaceServiceErrorCodes.subscribe()");
+		laundry.washerUserInterfaceServiceErrorCodes.subscribe(function (value) {
+			washerUserInterfaceServiceErrorCodes_setval(value);
+		});
+	}, timeout);
 
-	laundry.maximumWaterTemperature.subscribe(function (value) {
-		maximumWaterTemperature_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.cycleSelected.subscribe()");
+		laundry.cycleSelected.subscribe(function (value) {
+			cycleSelected_setval(value);
+		});
+	}, timeout);
 
-	laundry.dsmOverridesAllowed.subscribe(function (value) {
-		dsmOverridesAllowed_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.tankSelected.subscribe()");
+		laundry.tankSelected.subscribe(function (value) {
+			tankSelected_setval(value);
+		});
+	}, timeout);
 
-	laundry.dryerServiceErrorCodes.subscribe(function (value) {
-		dryerServiceErrorCodes_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.tankStatus.subscribe()");
+		laundry.tankStatus.subscribe(function (value) {
+			tankStatus_setval(value);
+		});
+	}, timeout);
 
-	laundry.cycleCount.subscribe(function (value) {
-		cycleCount_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.timeRemainingInSeconds.subscribe()");
+		laundry.timeRemainingInSeconds.subscribe(function (value) {
+			timeRemainingInSeconds_setval(value);
+		});
+	}, timeout);
 
-	laundry.endOfCycle.subscribe(function (value) {
-		endOfCycle_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.maximumWaterTemperature.subscribe()");
+		laundry.maximumWaterTemperature.subscribe(function (value) {
+			maximumWaterTemperature_setval(value);
+		});
+	}, timeout);
 
-	laundry.machineSubCycle.subscribe(function (value) {
-		machineSubCycle_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.dsmOverridesAllowed.subscribe()");
+		laundry.dsmOverridesAllowed.subscribe(function (value) {
+			dsmOverridesAllowed_setval(value);
+		});
+	}, timeout);
 
-	laundry.machineStatus.subscribe(function (value) {
-		machineStatus_setval(value);
-	});
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.dryerServiceErrorCodes.subscribe()");
+		laundry.dryerServiceErrorCodes.subscribe(function (value) {
+			dryerServiceErrorCodes_setval(value);
+		});
+	}, timeout);
+
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.cycleCount.subscribe()");
+		laundry.cycleCount.subscribe(function (value) {
+			cycleCount_setval(value);
+		});
+	}, timeout);
+
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.endOfCycle.subscribe()");
+		laundry.endOfCycle.subscribe(function (value) {
+			endOfCycle_setval(value);
+		});
+	}, timeout);
+
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.machineSubCycle.subscribe()");
+		laundry.machineSubCycle.subscribe(function (value) {
+			machineSubCycle_setval(value);
+		});
+	}, timeout);
+
+	timeout += pacingInterval;
+	setTimeout(function() {
+		console.log("laundry.machineStatus.subscribe()");
+		laundry.machineStatus.subscribe(function (value) {
+			machineStatus_setval(value);
+		});
+		console.log("Setup complete!");
+	}, timeout);
+
 });
 
