@@ -7,38 +7,112 @@ var greenBean = require("green-bean");
 
 // this is where we will store the latest values
 laundryVals = {
-	machineStatus: "Unknown",
-	machineSubCycle: "Unknown",
-	endOfCycle: "Unknown",
-	cycleCount: "Unknown",
-	dryerServiceErrorCodes: "Unknown",
-	maximumWaterTemperature: "Unknown",
-	timeRemainingInSeconds: "Unknown",
-	tankStatus: "Unknown",
-	tankSelected: "Unknown",
-	cycleSelected: "Unknown",
-	washerUserInterfaceServiceErrorCodes: "Unknown",
-	washerInverterServiceErrorCodes: "Unknown",
-	washerMainControlServiceErrorCodes: "Unknown",
-	operatingMode: "Unknown",
-	dryerCriticalResponseEnabled: "Unknown",
-	delayTimeRemainingInMinutes: "Unknown"
+	machineStatus: {
+		text: "Unknown",
+		numeric: -1
+		       },
+	machineSubCycle: {
+		text: "Unknown",
+		numeric: -1
+			 },
+	endOfCycle: {
+		text: "Unknown",
+		numeric: -1
+		    },
+	cycleCount: {
+		text: "Unknown",
+		numeric: -1
+		    },
+	dryerServiceErrorCodes: {
+		text: "Unknown",
+		numeric: -1
+				},
+	dsmOverridesAllowed: {
+		text: "Unknown",
+		numeric: -1
+			     },
+	maximumWaterTemperature: {
+		text: "Unknown",
+		numeric: -1
+				 },
+	timeRemainingInSeconds: {
+		text: "Unknown",
+		numeric: -1
+				},
+	tankStatus: {
+		text: "Unknown",
+		numeric: -1
+		    },
+	tankSelected: {
+		text: "Unknown",
+		numeric: -1
+		      },
+	cycleSelected: {
+		text: "Unknown",
+		numeric: -1
+		       },
+	washerUserInterfaceServiceErrorCodes: {
+		text: "Unknown",
+		numeric: -1
+					      },
+	washerInverterServiceErrorCodes: {
+		text: "Unknown",
+		numeric: -1
+					 },
+	washerMainControlServiceErrorCodes: {
+		text: "Unknown",
+		numeric: -1
+					    },
+	operatingMode: {
+		text: "Unknown",
+		numeric: -1
+		       },
+	dryerCriticalResponseEnabled: {
+		text: "Unknown",
+		numeric: -1
+				      },
+	delayTimeRemainingInMinutes: {
+		text: "Unknown",
+		numeric: -1
+				     }
 };
 
 applianceVals = {
-	address: "Unknown",
-	version: "Unknown",
-	type: "Unknown",
-	modelNumber: "Unknown",
-	serialNumber: "Unknown"
+	address: {
+		text: "Unknown",
+		numeric: -1
+		 },
+	version: {
+		text: "Unknown",
+		numeric: -1
+		 },
+	type: {
+		text: "Unknown",
+		numeric: -1
+	      },
+	modelNumber: {
+		text: "Unknown",
+		numeric: -1
+		     },
+	serialNumber: {
+		text: "Unknown",
+		numeric: -1
+		      }
 }
 
 // Get the initial value
 function delayTimeRemainingInMinutes_setval(value) {
 	console.log("delay time remaining is:", value);
-	laundryVals.delayTimeRemainingInMinutes = value.toString();
+	laundryVals.delayTimeRemainingInMinutes.text = value.toString();
+	laundryVals.delayTimeRemainingInMinutes.numeric = value;
 	if (config.post.laundry.delayTimeRemainingInMinutesi && config.post.enabled) {
-		poster(laundryVals.delayTimeRemainingInMinutes);
+		var jsondata = {
+			text: laundryVals.delayTimeRemainingInMinutes.text,
+			numeric: laundryVals.delayTimeRemainingInMinutes.numeric,
+			type: "laundry.delayTimeRemainingInMinutes",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -53,9 +127,16 @@ function dryerCriticalResponseEnabled_setval(value) {
 			stat = "Critical response enabled";
 			break;
 	}
-	laundryVals.dryerCriticalResponseEnabled = stat;
+	laundryVals.dryerCriticalResponseEnabled.text = stat;
+	laundryVals.dryerCriticalResponseEnabled.numeric = value;
 	if (config.post.laundry.dryerCriticalResponseEnabled && config.post.enabled) {
-		poster(laundryVals.dryerCriticalResponseEnabled);
+		var jsondata = {
+			text: laundryVals.dryerCriticalResponseEnabled.text,
+			numeric: laundryVals.dryerCriticalResponseEnabled.numeric,
+			type: "laundry.dryerCriticalResponseEnabled",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -94,36 +175,64 @@ function operatingMode_setval(value) {
 			stat = "Floor type selection mode";
 			break;
 	}
-	laundryVals.operatingMode = stat;
+	laundryVals.operatingMode.text = stat;
+	laundryVals.operatingMode.numeric = value;
 	if (config.post.laundry.operatingMode && config.post.enabled) {
-		poster(laundryVals.operatingMode);
+		var jsondata = {
+			text: laundryVals.operatingMode.text,
+			numeric: laundryVals.operatingMode.numeric,
+			type: "laundry.operatingMode",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 // We need to decode the bitfield
 function washerMainControlServiceErrorCodes_setval(value) {
 	console.log("washer main control service error codes are:", value);
-	laundryVals.washerMainControlServiceErrorCodes = value.toString();
+	laundryVals.washerMainControlServiceErrorCodes.text = value.toString();
+	laundryVals.washerMainControlServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerMainControlServiceErrorCodes && config.post.enabled) {
-		poster(laundryVals.washerMainControlServiceErrorCodes);
+		var jsondata = {
+			text: laundryVals.washerMainControlServiceErrorCodes.text,
+			numeric: laundryVals.washerMainControlServiceErrorCodes.numeric,
+			type: "laundry.washerMainControlServiceErrorCodes",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 // We need to decode the bitfield
 function washerInverterServiceErrorCodes_setval(value) {
 	console.log("washer inverter service error codes are:", value);
-	laundryVals.washerInverterServiceErrorCodes = value.toString();
+	laundryVals.washerInverterServiceErrorCodes.text = value.toString();
+	laundryVals.washerInverterServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerInverterServiceErrorCodes && config.post.enabled) {
-		poster(laundryVals.washerInverterServiceErrorCodes);
+		var jsondata = {
+			text: laundryVals.washerInverterServiceErrorCodes.text,
+			numeric: laundryVals.washerInverterServiceErrorCodes.numeric,
+			type: "laundry.washerInverterServiceErrorCodes",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 // We need to decode the bitfield
 function washerUserInterfaceServiceErrorCodes_setval(value) {
 	console.log("washer user interface error codes are:", value);
-	laundryVals.washerUserInterfaceServiceErrorCodes = value.toString();
+	laundryVals.washerUserInterfaceServiceErrorCodes.text = value.toString();
+	laundryVals.washerUserInterfaceServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerUserInterfaceServiceErrorCodes && config.post.enabled) {
-		poster(laundryVals.washerUserInterfaceServiceErrorCodes);
+		var jsondata = {
+			text: laundryVals.washerUserInterfaceServiceErrorCodes.text,
+			numeric: laundryVals.washerUserInterfaceServiceErrorCodes.numeric,
+			type: "laundry.washerUserInterfaceServiceErrorCodes",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -231,35 +340,63 @@ function cycleSelected_setval(value) {
 			stat = "Warm up";
 			break;
 	}
-	laundryVals.cycleSelected = stat;
+	laundryVals.cycleSelected.text = stat;
+	laundryVals.cycleSelected.numeric = value;
 	if (config.post.laundry.cycleSelected && config.post.enabled) {
-		poster(laundryVals.cycleSelected);
+		var jsondata = {
+			text: laundryVals.cycleSelected.text,
+			numeric: laundryVals.cycleSelected.numeric,
+			type: "laundry.cycleSelected",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 // Need to test this to see how to parse tankType, tankEnabled
 function tankSelected_setval(value) {
 	console.log("selected tank is:", value);
-	laundryVals.tankSelected = value.toString();
+	laundryVals.tankSelected.text = value.toString();
+	laundryVals.tankSelected.numeric = value;
 	if (config.post.laundry.tankSelected && config.post.enabled) {
-		poster(laundryVals.tankSelected);
+		var jsondata = {
+			text: laundryVals.tankSelected.text,
+			numeric: laundryVals.tankSelected.numeric,
+			type: "laundry.tankSelected",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 // Need to test this  to see how to parse tankType, TankPercentageRemaining
 function tankStatus_setval(value) {
 	console.log("tank status is:", value);
-	laundryVals.tankStatus = value.toString();
+	laundryVals.tankStatus.text = value.toString();
+	laundryVals.tankStatus.numeric = value;
 	if (config.post.laundry.tankStatus && config.post.enabled) {
-		poster(laundryVals.tankStatus);
+		var jsondata = {
+			text: laundryVals.tankStatus.text,
+			numeric: laundryVals.tankStatus.numeric,
+			type: "laundry.tankStatus",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 function timeRemainingInSeconds_setval(value) {
 	console.log("time remaining is:", value);
-	laundryVals.timeRemainingInSeconds = value.toString();
+	laundryVals.timeRemainingInSeconds.text = value.toString();
+	laundryVals.timeRemainingInSeconds.numeric = value;
 	if (config.post.laundry.timeRemainingInSeconds && config.post.enabled) {
-		poster(laundryVals.timeRemainingInSeconds);
+		var jsondata = {
+			text: laundryVals.timeRemainingInSeconds.text,
+			numeric: laundryVals.timeRemainingInSeconds.numeric,
+			type: "laundry.timeRemainingInSeconds",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -292,9 +429,16 @@ function maximumWaterTemperature_setval(value) {
 			stat = "Extra hot";
 			break;
 	}
-	laundryVals.maximumWaterTemperature = stat;
+	laundryVals.maximumWaterTemperature.text = stat;
+	laundryVals.maximumWaterTemperature.numeric = value;
 	if (config.post.laundry.maximumWaterTemperature && config.post.enabled) {
-		poster(laundryVals.maximumWaterTemperature);
+		var jsondata = {
+			text: laundryVals.maximumWaterTemperature.text,
+			numeric: laundryVals.maximumWaterTemperature.numeric,
+			type: "laundry.maximumWaterTemperature",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -309,9 +453,16 @@ function dsmOverridesAllowed_setval(value) {
 			stat = "DSM override allowed";
 			break;
 	}
-	laundryVals.dsmOverridesAllowed = stat;
+	laundryVals.dsmOverridesAllowed.text = stat;
+	laundryVals.dsmOverridesAllowed.numeric = value;
 	if (config.post.laundry.dsmOverridesAllowed && config.post.enabled) {
-		poster(laundryVals.dsmOverridesAllowed);
+		var jsondata = {
+			text: laundryVals.dsmOverridesAllowed.text,
+			numeric: laundryVals.dsmOverridesAllowed.numeric,
+			type: "laundry.dsmOverridesAllowed",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -356,17 +507,31 @@ function dryerServiceErrorCodes_setval(value) {
 			stat = "User interface assertion";
 			break;
 	}
-	laundryVals.dryerServiceErrorCodes = stat;
+	laundryVals.dryerServiceErrorCodes.text = stat;
+	laundryVals.dryerServiceErrorCodes.numeric = value;
 	if (config.post.laundry.dryerServiceErrorCodes && config.post.enabled) {
-		poster(laundryVals.dryerServiceErrorCodes);
+		var jsondata = {
+			text: laundryVals.dryerServiceErrorCodes.text,
+			numeric: laundryVals.dryerServiceErrorCodes.numeric,
+			type: "laundry.dryerServiceErrorCodes",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
 function cycleCount_setval(value) {
 	console.log("cycle count is:", value);
-	laundryVals.cycleCount = value.toString();
+	laundryVals.cycleCount.text = value.toString();
+	laundryVals.cycleCount.numeric = value;
 	if (config.post.laundry.cycleCount && config.post.enabled) {
-		poster(laundryVals.cycleCount);
+		var jsondata = {
+			text: laundryVals.cycleCount.text,
+			numeric: laundryVals.cycleCount.numeric,
+			type: "laundry.cycleCount",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -381,9 +546,16 @@ function endOfCycle_setval(value) {
 			stat = "End of cycle";
 			break;
 	}
-	laundryVals.endOfCycle = stat;
+	laundryVals.endOfCycle.text = stat;
+	laundryVals.endOfCycle.numeric = value;
 	if (config.post.laundry.endOfCycle && config.post.enabled) {
-		poster(laundryVals.endOfCycle);
+		var jsondata = {
+			text: laundryVals.endOfCycle.text,
+			numeric: laundryVals.endOfCycle.numeric,
+			type: "laundry.endOfCycle",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -443,9 +615,16 @@ function machineSubCycle_setval(value) {
 			stat = "Air fluff";
 			break;
 	}
-	laundryVals.machineSubCycle = stat;
+	laundryVals.machineSubCycle.text = stat;
+	laundryVals.machineSubCycle.numeric = value;
 	if (config.post.laundry.machineSubCycle && config.post.enabled) {
-		poster(laundryVals.machineSubCycle);
+		var jsondata = {
+			text: laundryVals.machineSubCycle.text,
+			numeric: laundryVals.machineSubCycle.numeric,
+			type: "laundry.machineSubCycle",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -484,9 +663,16 @@ function machineStatus_setval(value) {
 			stat = "Clean speak";
 			break;
 	} 
-	laundryVals.machineStatus = stat;
+	laundryVals.machineStatus.text = stat;
+	laundryVals.machineStatus.numeric = value;
 	if (config.post.laundry.machineStatus && config.post.enabled) {
-		poster(laundryVals.machineStatus);
+		var jsondata = {
+			text: laundryVals.machineStatus.text,
+			numeric: laundryVals.machineStatus.numeric,
+			type: "laundry.machineStatus",
+			stat: "update"
+		};
+		poster(jsondata);
 	}
 }
 
@@ -526,17 +712,20 @@ function applianceType_setval(value) {
 			stat = "Gas range";
 			break;
 	}
-	applianceVals.type = stat;
+	applianceVals.type.text = stat;
+	applianceVals.type.numeric = value;
 }
 
 greenBean.connect("laundry", function (laundry) {
 	var pacingInterval = 250; //500ms
 	var timeout = 0;
 	// Get the appliance info
-	applianceVals.address = laundry.address;
-	console.log("address is: ", applianceVals.address);
-	applianceVals.version = laundry.version.join(".");
-	console.log("version is: ", applianceVals.version);
+	applianceVals.address.text = laundry.address;
+	applianceVals.address.numeric = parseInt(laundry.address);
+	console.log("address is: ", applianceVals.address.text);
+	applianceVals.version.text = laundry.version.join(".");
+	applianceVals.version.numeric = parseInt(laundry.version);
+	console.log("version is: ", applianceVals.version.text);
 
 	console.log("Reading data and setting up subscriptions...");
 	laundry.applianceType.read(function (value) {
@@ -547,8 +736,9 @@ greenBean.connect("laundry", function (laundry) {
 	setTimeout(function() {
 		console.log("laundry.modelNumber.read()");
 		laundry.modelNumber.read(function (modelNumber) {
-			applianceVals.modelNumber = modelNumber.trim();
-			console.log("model number is: ", applianceVals.modelNumber);
+			applianceVals.modelNumber.text = modelNumber.trim();
+			applianceVals.modelNumber.numeric = parseInt(modelNumber);
+			console.log("model number is: ", applianceVals.modelNumber.text);
 		});
 	}, timeout);
 
@@ -556,8 +746,9 @@ greenBean.connect("laundry", function (laundry) {
 	setTimeout(function() {
 		console.log("laundry.serialNumber.read()");
 		laundry.serialNumber.read(function (serialNumber) {
-			applianceVals.serialNumber = serialNumber.trim();
-			console.log("serial number is: ", applianceVals.serialNumber);
+			applianceVals.serialNumber.text = serialNumber.trim();
+			applianceVals.serialNumber.numeric = parseInt(serialNumber);
+			console.log("serial number is: ", applianceVals.serialNumber.text);
 		});
 	}, timeout);
 

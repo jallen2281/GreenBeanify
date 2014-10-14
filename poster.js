@@ -1,26 +1,43 @@
 var http = require('http');
+var pkgjson = require('./package');
 
 // send an update
 module.exports = function postUpdate(jsondata){
-	
-	var data = {
-		text: jsondata,
-		numeric: 1
-	};
+	// fast rfc4122 v4 compliant UUID generator from 
+	// https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136 
+	var lut = [];
+	for (var i=0; i<256; i++) { 
+		lut[i] = (i<16?'0':'')+(i).toString(16); 
+	}
+	function uuid() {
+		var d0 = Math.random()*0xffffffff|0;
+		var d1 = Math.random()*0xffffffff|0;
+		var d2 = Math.random()*0xffffffff|0;
+		var d3 = Math.random()*0xffffffff|0;
+		return lut[d0&0xff]+lut[d0>>8&0xff]+lut[d0>>16&0xff]+lut[d0>>24&0xff]+'-'+
+			lut[d1&0xff]+lut[d1>>8&0xff]+'-'+lut[d1>>16&0x0f|0x40]+lut[d1>>24&0xff]+'-'+
+			lut[d2&0x3f|0x80]+lut[d2>>8&0xff]+'-'+lut[d2>>16&0xff]+lut[d2>>24&0xff]+
+			lut[d3&0xff]+lut[d3>>8&0xff]+lut[d3>>16&0xff]+lut[d3>>24&0xff];
+	}
+
+	var date = new Date();
 
 	var postdata = {
 		GreenBeanify: { 
-			id: "aaabbbccdddd",
-			created_at: "2014-10-01T21:23:41-08:00",
-			"status": "changed",
-			type: "laundry.machineStatus", 
+			id: uuid(),
+			created_at: date.toISOString(), //ISO formatted date such as 2014-10-13T20:07:15.667Z
+			"status": jsondata.stat,
+			type: jsondata.type, 
 			applianceAddress: applianceVals.address,
 			applianceType: applianceVals.type,
 			modelNumber: applianceVals.modelNumber,
 			serialNumber: applianceVals.serialNumber,
 			applianceVersion: applianceVals.version,
-			softwareVersion: "AA.BB.CC.DD",
-			data: data
+			softwareVersion: pkgjson.version,
+			data: {
+				text: jsondata.text,
+				numeric: jsondata.numeric
+			}
 		}
 	};
 

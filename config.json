@@ -12,6 +12,7 @@
       "endOfCycle": true,
       "cycleCount": true,
       "dryerServiceErrorCodes": true,
+      "dsmOverridesAllowed": true,
       "maximumWaterTemperature": true,
       "timeRemainingInSeconds": true,
       "tankStatus": true,

@@ -17,7 +17,7 @@ block content
           each val, key in laundryVals
             tr
               td #{key}
-              td #{val}
+              td #{val.text}
               td
                 a(href='/laundry/#{key}') /laundry/#{key}
   #applianceList
@@ -30,5 +30,5 @@ block content
         each val, key in applianceVals
           tr
             td #{key}
-            td #{val}
+            td #{val.text}
   #applianceType 
