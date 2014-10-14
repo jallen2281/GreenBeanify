@@ -27,7 +27,7 @@ module.exports = function postUpdate(jsondata){
 			id: uuid(),
 			created_at: date.toISOString(), //ISO formatted date such as 2014-10-13T20:07:15.667Z
 			"status": jsondata.stat,
-			type: jsondata.type, 
+			messageType: jsondata.type, 
 			applianceAddress: applianceVals.address,
 			applianceType: applianceVals.type,
 			modelNumber: applianceVals.modelNumber,
