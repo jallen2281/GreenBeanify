@@ -466,47 +466,76 @@ function dsmOverridesAllowed_setval(value) {
 	}
 }
 
+/* We need to decode the bit field */
 function dryerServiceErrorCodes_setval(value) {
 	console.log("dryer service error codes are:", value);
-	var stat = "Reserved";
-	switch (value) {
-		case 0:
-			stat = "Inlet short";
-			break;
-		case 1:
-			stat = "Outlet short";
-			break;
-		case 2:
-			stat = "inlet open";
-			break;
-		case 3:
-			stat = "Outlet open";
-			break;
-		case 4:
-			stat = "EEPROM error";
-			break;
-		case 5:
-			stat = "Stuck button";
-			break;
-		case 6:
-			stat = "Door switch open";
-			break;
-		case 7:
-			stat = "Door brown out";
-			break;
-		case 8:
-			stat = "Door drum motor";
-			break;
-		case 9:
-			stat = "User interface flash CRC error";
-			break;
-		case 10:
-			stat = "User interface watchdog reset";
-			break;
-		case 11:
-			stat = "User interface assertion";
-			break;
+	var stat = "";
+
+	function addstr(instr) {
+		if (stat.length == 0) {
+			stat = instr;
+		} else {
+			stat = stat.concat(", ",instr);
+		}
 	}
+
+	// bit 0
+	if (value & 1) {
+		addstr("Inlet short");
+	}
+	// bit 1
+	if (value & 2) {
+		addstr("Outlet short");
+	}
+	// bit 2
+	if (value & 4) {
+		addstr("inlet open");
+	}
+	// bit 3
+	if (value & 8) {
+		addstr("Outlet open");
+	}
+	// bit 4
+	if (value & 16) {
+		addstr("EEPROM error");
+	}
+	// bit 5		
+	if (value & 32) {
+		addstr("Stuck button");
+	}
+	// bit 6	
+	if (value & 64) {
+		addstr("Door switch open");
+	}
+	// bit 7
+	if (value & 128) {
+		addstr("Door brown out");
+	}
+	// bit 8
+	if (value & 256) {
+		addstr("Door drum motor");
+	}
+	// bit 9
+	if (value & 512) {
+		addstr("User interface flash CRC error");
+	}
+	// bit 10
+	if (value & 1024) {
+		addstr("User interface watchdog reset");
+	}
+	// bit 11
+	if (value & 2048) {
+		addstr("User interface assertion");
+	}
+	// bits 12-31
+	if (value & 0xFFFFF000) {
+		addstr("Reserved");
+	}
+	// If there is no error, set the text to none
+	if (stat.length == 0) {
+		stat = "None";
+	}
+
 	laundryVals.dryerServiceErrorCodes.text = stat;
 	laundryVals.dryerServiceErrorCodes.numeric = value;
 	if (config.post.laundry.dryerServiceErrorCodes && config.post.enabled) {
