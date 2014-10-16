@@ -195,7 +195,106 @@ function operatingMode_setval(value) {
 // We need to decode the bitfield
 function washerMainControlServiceErrorCodes_setval(value) {
 	console.log("washer main control service error codes are:", value);
-	laundryVals.washerMainControlServiceErrorCodes.text = value.toString();
+	var stat = "";
+
+	function addstr(instr) {
+		if (stat.length == 0) {
+			stat = instr;
+		} else {
+			stat = stat.concat(", ",instr);
+		}
+	}
+
+	// bit 0-7
+	if (value & 0xFF) {
+		addstr("Reserved");
+	}
+	// bit 8
+	if (value & 256) {
+		addstr("Door lock feedbacks");
+	}
+	// bit 9
+	if (value & 512) {
+		addstr("Bulk detergent pressure sensor");
+	}
+	// bit 10
+	if (value & 1024) {
+		addstr("Bulk softener pressure sensor");
+	}
+	// bit 11-15
+	if (value & 0xF800) {
+		addstr("Reserved");
+	}
+	// bit 16
+	if (value & 0x10000) {
+		addstr("Volume slow fill");
+	}
+	// bit 17
+	if (value & 0x20000) {
+		addstr("Drain system");
+	}
+	// bit 18
+	if (value & 0x40000) {
+		addstr("Main control EEPROM");
+	}
+	// bit 19
+	if (value & 0x80000) {
+		addstr("Target volume overflow");
+	}
+	// bit 20
+	if (value & 0x100000) {
+		addstr("Overflow");
+	}
+	// bit 21
+	if (value & 0x200000) {
+		addstr("Inverter redundancy");
+	}
+	// bit 22
+	if (value & 0x400000) {
+		addstr("Flow meter");
+	}
+	// bit 23
+	if (value & 0x800000) {
+		addstr("Max errors");
+	}
+	// bit 24
+	if (value & 0x1000000) {
+		addstr("Door lock");
+	}
+	// bit 25
+	if (value & 0x2000000) {
+		addstr("Door unlock");
+	}
+	// bit 26
+	if (value & 0x4000000) {
+		addstr("Door open");
+	}
+	// bit 27
+	if (value & 0x8000000) {
+		addstr("Pressure switch");
+	}
+	// bit 28
+	if (value & 0x10000000) {
+		addstr("Dispenser motor");
+	}
+	// bit 29
+	if (value & 0x20000000) {
+		addstr("Thermal open");
+	}
+	// bit 30
+	if (value & 0x40000000) {
+		addstr("Thermal open");
+	}
+	// bit 31
+	if (value & 0x80000000) {
+		addstr("Level slow fill");
+	}
+	// No errors
+	if (value == 0) {
+		stat = "None";
+	}
+
+	laundryVals.washerMainControlServiceErrorCodes.text = stat;
 	laundryVals.washerMainControlServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerMainControlServiceErrorCodes && config.post.enabled) {
 		var jsondata = {
