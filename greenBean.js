@@ -469,7 +469,110 @@ function washerInverterServiceErrorCodes_setval(value) {
 // We need to decode the bitfield
 function washerUserInterfaceServiceErrorCodes_setval(value) {
 	console.log("washer user interface error codes are:", value);
-	laundryVals.washerUserInterfaceServiceErrorCodes.text = value.toString();
+	var stat = "";
+
+	function addstr(instr) {
+		if (stat.length == 0) {
+			stat = instr;
+		} else {
+			stat = stat.concat(", ",instr);
+		}
+	}
+
+	// bit 0-7
+	if (value & 0xFF) {
+		addstr("Reserved");
+	}
+	// bit 8
+	if (value & 0x100) {
+		addstr("Door lock");
+	}
+	// bit 9
+	if (value & 0x200) {
+		addstr("Door unlock");
+	}
+	// bit 10
+	if (value & 0x400) {
+		addstr("Flow meter");
+	}
+	// bit 11
+	if (value & 0x800) {
+		addstr("Recirculation pump");
+	}
+	// bit 12-15
+	if (value & 0xF000) {
+		addstr("Reserved");
+	}
+	// bit 16
+	if (value & 0x10000) {
+		addstr("Slow level fill");
+	}
+	// bit 17
+	if (value & 0x20000) {
+		addstr("Slow volume fill");
+	}
+	// bit 18
+	if (value & 0x40000) {
+		addstr("Drain system");
+	}
+	// bit 19
+	if (value & 0x80000) {
+		addstr("Overflow");
+	}
+	// bit 20
+	if (value & 0x100000) {
+		addstr("Inverter communication timeout");
+	}
+	// bit 21
+	if (value & 0x200000) {
+		addstr("Door open");
+	}
+	// bit 22
+	if (value & 0x400000) {
+		addstr("Door unlocked in run");
+	}
+	// bit 23
+	if (value & 0x800000) {
+		addstr("Maximum volume error");
+	}
+	// bit 24
+	if (value & 0x1000000) {
+		addstr("EEPROM");
+	}
+	// bit 25
+	if (value & 0x2000000) {
+		addstr("User interface flash CRC error");
+	}
+	// bit 26
+	if (value & 0x4000000) {
+		addstr("User interface watchdog reset");
+	}
+	// bit 27
+	if (value & 0x8000000) {
+		addstr("User interface assertion");
+	}
+	// bit 28
+	if (value & 0x10000000) {
+		addstr("Brake timeout");
+	}
+	// bit 29
+	if (value & 0x20000000) {
+		addstr("Dispenser motor timeout");
+	}
+	// bit 30
+	if (value & 0x40000000) {
+		addstr("Stuck button");
+	}
+	// bit 31
+	if (value & 0x80000000) {
+		addstr("Pressure switch");
+	}
+	// no error
+	if (value == 0) {
+		stat = "None";
+	}
+
+	laundryVals.washerUserInterfaceServiceErrorCodes.text = stat;
 	laundryVals.washerUserInterfaceServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerUserInterfaceServiceErrorCodes && config.post.enabled) {
 		var jsondata = {
