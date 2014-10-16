@@ -83,25 +83,36 @@ router.get('/cycleSelected/:format?', function(req, res) {
 	}
 });
 
-router.get('/tankSelected/:format?', function(req, res) {
+router.get('/tankType/:format?', function(req, res) {
 	if (req.params.format == "numeric") {
-		res.send(laundryVals.tankSelected.numeric.toString());
+		res.send(laundryVals.tankType.numeric.toString());
 	} else if (req.params.format == "json") {
-		res.json({text: laundryVals.tankSelected.text,
-			numeric: laundryVals.tankSelected.numeric});
+		res.json({text: laundryVals.tankType.text,
+			numeric: laundryVals.tankType.numeric});
 	} else {
-		res.send(laundryVals.tankSelected.text);
+		res.send(laundryVals.tankType.text);
 	}
 });
 
-router.get('/tankStatus/:format?', function(req, res) {
+router.get('/tankEnabled/:format?', function(req, res) {
 	if (req.params.format == "numeric") {
-		res.send(laundryVals.tankStatus.numeric.toString());
+		res.send(laundryVals.tankEnabled.numeric.toString());
 	} else if (req.params.format == "json") {
-		res.json({text: laundryVals.tankStatus.text,
-			numeric: laundryVals.tankStatus.numeric});
+		res.json({text: laundryVals.tankEnabled.text,
+			numeric: laundryVals.tankEnabled.numeric});
 	} else {
-		res.send(laundryVals.tankStatus.text);
+		res.send(laundryVals.tankEnabled.text);
+	}
+});
+
+router.get('/tankPercentageRemaining/:format?', function(req, res) {
+	if (req.params.format == "numeric") {
+		res.send(laundryVals.tankPercentageRemaining.numeric.toString());
+	} else if (req.params.format == "json") {
+		res.json({text: laundryVals.tankPercentageRemaining.text,
+			numeric: laundryVals.tankPercentageRemaining.numeric});
+	} else {
+		res.send(laundryVals.tankPercentageRemaining.text);
 	}
 });
 
