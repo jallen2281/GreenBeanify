@@ -310,7 +310,150 @@ function washerMainControlServiceErrorCodes_setval(value) {
 // We need to decode the bitfield
 function washerInverterServiceErrorCodes_setval(value) {
 	console.log("washer inverter service error codes are:", value);
-	laundryVals.washerInverterServiceErrorCodes.text = value.toString();
+	var stat = "";
+
+	function addstr(instr) {
+		if (stat.length == 0) {
+			stat = instr;
+		} else {
+			stat = stat.concat(", ",instr);
+		}
+	}
+
+	// bit 0
+	if (value & 1) {
+		addstr("CPU register failure");
+	}
+	// bit 1
+	if (value & 2) {
+		addstr("ADC failure");
+	}
+	// bit 2
+	if (value & 4) {
+		addstr("Clock failure");
+	}
+	// bit 3
+	if (value & 8) {
+		addstr("Demo mode fault");
+	}
+	// bit 4
+	if (value & 16) {
+		addstr("Reset");
+	}
+	// bit 5
+	if (value & 32) {
+		addstr("Harness fault");
+	}
+	// bit 6
+	if (value & 64) {
+		addstr("Motor temperature watchdog");
+	}
+	// bit 7
+	if (value & 128) {
+		addstr("Motor over temperature");
+	}
+	// bit 8
+	if (value & 256) {
+		addstr("Door switch fault");
+	}
+	// bit 9
+	if (value & 512) {
+		addstr("Door lock fault");
+	}
+	// bit 10
+	if (value & 1024) {
+		addstr("AC loss");
+	}
+	// bit 11
+	if (value & 2048) {
+		addstr("VB2 brown out");
+	}
+	// bit 12
+	if (value & 0x1000) {
+		addstr("Over speed");
+	}
+	// bit 13
+	if (value & 0x2000) {
+		addstr("Software reset");
+	}
+	// bit 14
+	if (value & 0x4000) {
+		addstr("ROM failure");
+	}
+	// bit 15
+	if (value & 0x8000) {
+		addstr("RAM failure");
+	}
+	// bit 16
+	if (value & 0x10000) {
+		addstr("Phase current critically high");
+	}
+	// bit 17
+	if (value & 0x20000) {
+		addstr("Locked rotor");
+	}
+	// bit 18
+	if (value & 0x40000) {
+		addstr("Hall sensor fault");
+	}
+	// bit 19
+	if (value & 0x80000) {
+		addstr("Communications fault");
+	}
+	// bit 20
+	if (value & 0x100000) {
+		addstr("Profiler fault");
+	}
+	// bit 21
+	if (value & 0x200000) {
+		addstr("Watchdog timeout");
+	}
+	// bit 22
+	if (value & 0x400000) {
+		addstr("Resource watchdog timeout");
+	}
+	// bit 23
+	if (value & 0x800000) {
+		addstr("Stack fault");
+	}
+	// bit 24
+	if (value & 0x1000000) {
+		addstr("Gate driver fault");
+	}
+	// bit 25
+	if (value & 0x2000000) {
+		addstr("VCC brown out");
+	}
+	// bit 26
+	if (value & 0x4000000) {
+		addstr("DCBUS brown out");
+	}
+	// bit 27
+	if (value & 0x8000000) {
+		addstr("DCBUS critically high");
+	}
+	// bit 28
+	if (value & 0x10000000) {
+		addstr("IGBT temperature critically low");
+	}
+	// bit 29
+	if (value & 0x20000000) {
+		addstr("IGBT temperature critically high");
+	}
+	// bit 30
+	if (value & 0x40000000) {
+		addstr("GEA2 inverter action timeout");
+	}
+	// bit 31
+	if (value & 0x80000000) {
+		addstr("Motor temperature critically high");
+	}
+	// No error
+	if (value == 0) {
+		stat = "None";
+	}
+
+	laundryVals.washerInverterServiceErrorCodes.text = stat;
 	laundryVals.washerInverterServiceErrorCodes.numeric = value;
 	if (config.post.laundry.washerInverterServiceErrorCodes && config.post.enabled) {
 		var jsondata = {
@@ -696,7 +839,7 @@ function dryerServiceErrorCodes_setval(value) {
 		addstr("Reserved");
 	}
 	// If there is no error, set the text to none
-	if (stat.length == 0) {
+	if (value == 0) {
 		stat = "None";
 	}
 
