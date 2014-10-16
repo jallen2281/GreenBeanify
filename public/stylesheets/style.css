@@ -31,6 +31,7 @@ a {
 	position:relative;
 	left: -20px;
 	top: -280px;
+	z-index: -1;
 }
 	#applianceList table {
 		border-collapse:separate;
