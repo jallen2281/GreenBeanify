@@ -39,11 +39,15 @@ laundryVals = {
 		text: "Unknown",
 		numeric: -1
 				},
-	tankStatus: {
+	tankType: {
 		text: "Unknown",
 		numeric: -1
 		    },
-	tankSelected: {
+	tankEnabled: {
+		text: "Unknown",
+		numeric: -1
+		    },
+	tankPercentageRemaining: {
 		text: "Unknown",
 		numeric: -1
 		      },
@@ -355,14 +359,45 @@ function cycleSelected_setval(value) {
 
 // Need to test this to see how to parse tankType, tankEnabled
 function tankSelected_setval(value) {
-	console.log("selected tank is:", value);
-	laundryVals.tankSelected.text = value.toString();
-	laundryVals.tankSelected.numeric = value;
-	if (config.post.laundry.tankSelected && config.post.enabled) {
+	console.log("selected tank type is:", value.tankType, ", enabled is:", value.tankEnabled);
+	var prev_tankType = laundryVals.tankType.numeric;
+	var prev_tankEnabled = laundryVals.tankEnabled.numeric;
+	var stat = "Detergent";
+	switch (value.tankType) {
+		case 0:
+			stat = "Detergent";
+			break;
+		case 1:
+			stat = "Softener";
+			break;
+		case 2:
+			stat = "Bleach";
+			break;
+		case 3:
+			stat = "Other";
+			break;
+
+	}
+	laundryVals.tankType.text = stat;
+	laundryVals.tankType.numeric = value.tankType;
+	laundryVals.tankEnabled.text = value.tankEnabled.toString();
+	laundryVals.tankEnabled.numeric = value.tankEnabled;
+
+	if (config.post.laundry.tankType && config.post.enabled && (prev_tankType != value.tankType)) {
 		var jsondata = {
-			text: laundryVals.tankSelected.text,
-			numeric: laundryVals.tankSelected.numeric,
-			type: "laundry.tankSelected",
+			text: laundryVals.tankType.text,
+			numeric: laundryVals.tankType.numeric,
+			type: "laundry.tankType",
+			stat: "update"
+		};
+		poster(jsondata);
+	}
+
+	if (config.post.laundry.tankEnabled && config.post.enabled && (prev_tankEnabled != value.tankEnabled)) {
+		var jsondata = {
+			text: laundryVals.tankEnabled.text,
+			numeric: laundryVals.tankEnabled.numeric,
+			type: "laundry.tankEnabled",
 			stat: "update"
 		};
 		poster(jsondata);
@@ -371,14 +406,44 @@ function tankSelected_setval(value) {
 
 // Need to test this  to see how to parse tankType, TankPercentageRemaining
 function tankStatus_setval(value) {
-	console.log("tank status is:", value);
-	laundryVals.tankStatus.text = value.toString();
-	laundryVals.tankStatus.numeric = value;
-	if (config.post.laundry.tankStatus && config.post.enabled) {
+	console.log("tank status tanktype is:", value.tankType, ", percentage remaining is:", value.tankPercentageRemaining);
+	var prev_tankType = laundryVals.tankType.numeric;
+	var prev_tankPercentageRemaining = laundryVals.tankPercentageRemaining.numeric;
+	var stat = "Detergent";
+	switch (value.tankType) {
+		case 0:
+			stat = "Detergent";
+			break;
+		case 1:
+			stat = "Softener";
+			break;
+		case 2:
+			stat = "Bleach";
+			break;
+		case 3:
+			stat = "Other";
+			break;
+
+	}
+	laundryVals.tankType.text = stat;
+	laundryVals.tankType.numeric = value.tankType;
+	laundryVals.tankPercentageRemaining.text = value.tankPercentageRemaining.toString();
+	laundryVals.tankPercentageRemaining.numeric = value.tankPercentageRemaining;
+	if (config.post.laundry.tankType && config.post.enabled && (prev_tankType != value.tankType)) {
 		var jsondata = {
-			text: laundryVals.tankStatus.text,
-			numeric: laundryVals.tankStatus.numeric,
-			type: "laundry.tankStatus",
+			text: laundryVals.tankType.text,
+			numeric: laundryVals.tankType.numeric,
+			type: "laundry.tankType",
+			stat: "update"
+		};
+		poster(jsondata);
+	}
+
+	if (config.post.laundry.tankPercentageRemaining && config.post.enabled && (prev_tankPercentageRemaining != value.tankPercentageRemaining)) {
+		var jsondata = {
+			text: laundryVals.tankPercentageRemaining.text,
+			numeric: laundryVals.tankPercentageRemaining.numeric,
+			type: "laundry.tankPercentageRemaining",
 			stat: "update"
 		};
 		poster(jsondata);
