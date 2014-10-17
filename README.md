@@ -83,8 +83,9 @@ The HTTP GET request paths correspond with the gea-plugin-laundry's API call.
 - /laundry/dsmOverridesAllowed
 - /laundry/maximumWaterTemperature
 - /laundry/timeRemainingInSeconds
-- /laundry/tankStatus
-- /laundry/tankSelected
+- /laundry/tankType
+- /laundry/tankEnabled
+- /laundry/tankPercentageRemaining
 - /laundry/cycleSelected
 - /laundry/washerUserInterfaceServiceErrorCodes
 - /laundry/washerInverterServiceErrorCodes
