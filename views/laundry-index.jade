@@ -19,7 +19,12 @@ block content
               td #{key}
               td #{val.text}
               td
+                a(href='/laundry/#{key}/json/')
+                  img(src="/images/file-type-json2.png", alt="JSON", title="JSON", style="float:left;height:20px;width:auto;")
+                a(href='/laundry/#{key}/numeric/')
+                  img(src="/images/file-type-number.png", alt="Numeric", title="Numeric", style="float:left;height:20px;width:auto;")
                 a(href='/laundry/#{key}') /laundry/#{key}
+                  img(src="/images/file-type-txt.png", alt="Text", title="Text", style="float:left;height:20px;width:auto;")
   #applianceList
     h2 Appliance info
     table
@@ -31,4 +36,3 @@ block content
           tr
             td #{key}
             td #{val.text}
-  #applianceType 
