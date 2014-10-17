@@ -137,10 +137,10 @@ router.get('/tankPercentageRemaining/:format?', function(req, res) {
 
 router.get('/timeRemainingInSeconds/:format?', function(req, res) {
 	if (req.params.format == "numeric") {
-		res.send(laundryVals.tankStatus.numeric.toString());
+		res.send(laundryVals.timeRemainingInSeconds.numeric.toString());
 	} else if (req.params.format == "json") {
 		res.json({text: laundryVals.timeRemainingInSeconds.text,
-			numeric: laundryVals.tankStatus.numeric});
+			numeric: laundryVals.timeRemainingInSeconds.numeric});
 	} else {
 		res.send(laundryVals.timeRemainingInSeconds.text);
 	}
