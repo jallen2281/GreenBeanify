@@ -149,6 +149,18 @@ Example of callback JSON:
 - Based on Jianguo Jiang's Remote Dryer from the hackathon (https://github.com/jianguoj/BeanStalk).
 - v0.0.1 - First version.
 - v0.0.2 - Re-wrote update handling using subscriptions rather than reading the device each time. Added initial support for JSON POSTs on update.
+- v0.0.3
+ - Major overhaul of the web UI using Jade/CSS
+ - Removed initial read() functions for for subscription data as subscribe() does this for us on initialization.
+ - Added appliance info to the /laundry page (appliance type is always shown as Unknown due to [this bug](https://github.com/GEMakers/gea-sdk/issues/4))
+ - Moved user modifiable settings to a config file
+ - Added ability to globally and atomically enable/disable HTTP POST
+ - Added numeric and JSON formats to HTTP GET interface
+ - Completed initial HTTP POST implementation (may need to add error handling at some point)
+ - Bugfix: dryerServiceErrorCodes is now decoded as a bitfield and not an enumeration
+ - Broke out tankType, tankPercentageRemaining and tankEnabled properties from tankStatus and tankSelected (Unable to verify on my laundry pair though as subscription to these functions never fire the callback)
+ - Added bitfield decoding for washerMainControlServiceErrorCodes, washerInverterServiceErrorCodes, washerUserInterfaceServiceErrorCodes
+ - Fixed an issue where some of the HTTP GET URL links were not clickable on the /laundry page
 
 
 ### References
