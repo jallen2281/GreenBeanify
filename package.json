@@ -4,7 +4,7 @@
   "version": "0.0.3",
   "author": "Brian Rudy <brudy@praecogito.com>",
   "homepage": "https://github.com/rudybrian/GreenBeanify",
-  "license" : "GPL-2.0+"
+  "license" : "GPL-2.0+",
   "keywords" : [ "GE", "GEA", "SDK", "General Electric", "Green Bean" ],
   "repository" : {
     "type": "git", "url": "https://github.com/rudybrian/GreenBeanify.git"
