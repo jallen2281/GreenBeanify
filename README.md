@@ -25,7 +25,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 ### Installation instructions
 - Install Node.js
 - Install npm
-- *npm install brudy/GreenBeanify*
+- *npm install rudybrian/GreenBeanify*
 - cd into your GreenBeanify directory
 - Customize your settings in *config.json*
 - *npm start*
