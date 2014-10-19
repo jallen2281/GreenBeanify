@@ -47,11 +47,11 @@ module.exports = function postUpdate(jsondata){
 			created_at: date.toISOString(), //ISO formatted date such as 2014-10-13T20:07:15.667Z
 			"status": jsondata.stat,
 			messageType: jsondata.type, 
-			applianceAddress: applianceVals.address,
-			applianceType: applianceVals.type,
-			modelNumber: applianceVals.modelNumber,
-			serialNumber: applianceVals.serialNumber,
-			applianceVersion: applianceVals.version,
+			applianceAddress: applianceVals.address.text,
+			applianceType: applianceVals.type.text,
+			modelNumber: applianceVals.modelNumber.text,
+			serialNumber: applianceVals.serialNumber.text,
+			applianceVersion: applianceVals.version.text,
 			softwareVersion: pkgjson.version,
 			data: {
 				text: jsondata.text,
