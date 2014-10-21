@@ -31,7 +31,7 @@ GreenBeanify is an Express-based web service that interfaces (via firstbuild's G
 - *npm start*
 
 #### Settings
-Modify *config.json* as needed for your system.
+Modify *config.json* as needed for your system. *Note: the //comments below are not valid JSON, they are for guidance only and should not be copy-pasted*
 ```json
 {
   "instance": "main",
@@ -129,7 +129,7 @@ Example of callback JSON:
 		"modelNumber":"GFWR4805F0MC",
 		"serialNumber":"ZAxxxxxxG",
 		"applianceVersion":"0.1.1.46.1.91.1.1.3",
-		"softwareVersion":"0.0.3",
+		"softwareVersion":"0.1.0",
 		"data":{
 			"text":"Idle",
 			"numeric":0
@@ -162,6 +162,12 @@ Example of callback JSON:
  - Broke out tankType, tankPercentageRemaining and tankEnabled properties from tankStatus and tankSelected (Unable to verify on my laundry pair though as subscription to these functions never fire the callback)
  - Added bitfield decoding for washerMainControlServiceErrorCodes, washerInverterServiceErrorCodes, washerUserInterfaceServiceErrorCodes
  - Fixed an issue where some of the HTTP GET URL links were not clickable on the /laundry page
+- v0.1.0 
+ - First major version
+ - Roll-up of all features from the 0.0.x branch
+ - Fixed JSON POST data for appliance info (poster.js needed updating after changing the appliance global variables into nested objects) 
+ - Added artwork and links to the JSON, numeric and text format output options for HTTP GET in the /laundry page
+ - Added [simple reference implimentation](https://github.com/rudybrian/GreenBeanify-pushover-notifications) to send notifications via [Pushover](https://pushover.net/) on dryer/washing machine end of cycle.
 
 
 ### References
